@@ -48,7 +48,7 @@ const Register = () => {
         icon: "success",
         confirmButtonText: "OK",
       });
-      navigate("/login");
+      navigate("/Website-ecommerce/login");
     } catch (error) {
       Swal.fire({
         title: "Register Error!",

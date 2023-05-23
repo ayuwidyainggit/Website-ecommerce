@@ -41,7 +41,7 @@ const Navbar = () => {
       localStorage.removeItem("user");
       setProfile(false);
       alert("Berhasil Logout");
-      navigate("/");
+      navigate("/Website-ecommerce");
     }
   };
 
@@ -59,27 +59,27 @@ const Navbar = () => {
         <div className=" w-[60%]">
           <ul className="relative flex justify-around bg-[#2DCFC1] rounded-full w-[80%] left-[10%] h-[40px] items-center">
             <li className="w-[20%] text-white font-bold text-[20px] leading-[56px] top-[1px] hover:text-[#FDCC50] cursor-pointer text-center">
-              <Link to="/">
+              <Link to="/Website-ecommerce">
                 <p>Home</p>
               </Link>
             </li>
             <li className=" w-[20%] text-white font-bold text-[20px] leading-[56px] top-[1px] hover:text-[#FDCC50] cursor-pointer text-center ">
-              <Link to="/Product">Product</Link>
+              <Link to="/Website-ecommerce/Product">Product</Link>
             </li>
             <li className=" w-[20%] text-white font-bold text-[20px] leading-[56px] top-[1px] hover:text-[#FDCC50] cursor-pointer text-center">
-              <Link to="/Table">Table</Link>
+              <Link to="/Website-ecommerce/Table">Table</Link>
             </li>
           </ul>
         </div>
 
         {Token === null ? (
           <div className="w-[15%] relative flex justify-between right-8 ">
-            <Link to="/Login">
+            <Link to="/Website-ecommerce/Login">
               <button className="bg-[#FDCC50] rounded-sm w-[100px] h-[40px] text-white hover:text-[#2DCFC1]">
                 Login
               </button>
             </Link>
-            <Link to="/Register">
+            <Link to="/Website-ecommerce/Register">
               <button className="bg-[#2DCFC1] rounded-sm w-[100px] h-[40px] text-white hover:text-[#FDCC50]">
                 Register
               </button>

@@ -16,11 +16,11 @@ const Product = () => {
     <div className="w-[100%] relative">
       <div className="w-[90%] left-[5%] relative flex justify-end top-[4rem]">
         {isLogin === null ? (
-          <Link to="/login">
+          <Link to="/Website-ecommerce/login">
             <p className="text-bold text-xl text-[#2DCFC1]">Selengkapnya</p>
           </Link>
         ) : (
-          <Link to="/Product">
+          <Link to="/Website-ecommerce/Product">
             <p className="text-bold text-xl text-[#2DCFC1]">Selengkapnya</p>
           </Link>
         )}

@@ -44,7 +44,7 @@ const ProductAfterLogin = () => {
               <p></p>
             )}
             <div>
-              <Link to={`/productdetails/${produk.id}`}>
+              <Link to={`/Website-ecommerce/productdetails/${produk.id}`}>
                 <button className=" mr-4 mt-8 border border-[#2DCFC1] bg-[#2DCFC1] text-white h-[40px] w-[120px] rounded-md hover:bg-white hover:text-black">
                   Lihat Detail
                 </button>

@@ -95,7 +95,7 @@ const Table = () => {
           Table Product
         </p>
         <div className="relative flex justify-end w-[90%] left-[5%]">
-          <Link to="/addProduk">
+          <Link to="/Website-ecommerce/addProduk">
             <button className="font-bold border border-[#003049] bg-white text-[#003049] hover:bg-[#003049] hover:text-white h-[50px] w-[150px] rounded-xl">
               Create Produk +{" "}
             </button>
@@ -190,7 +190,7 @@ const Table = () => {
                     </td>
                     <td className="border border-slate-300 w-[30%] text-center">
                       <div className=" relative flex justify-around">
-                        <Link to={`/editProduk/${produk.id}`}>
+                        <Link to={`/Website-ecommerce/editProduk/${produk.id}`}>
                           <button onClick={() => onUpdate(produk)}>
                             <img src={edit} alt="" />
                           </button>

@@ -72,7 +72,7 @@ const AddProduct = () => {
         icon: "warning",
         confirmButtonText: "OK",
       });
-      navigate("/table");
+      navigate("/Website-ecommerce/table");
     } catch (error) {
       console.log(error);
       Swal.fire({

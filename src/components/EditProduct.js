@@ -74,7 +74,7 @@ const EditProduct = () => {
         icon: "success",
         confirmButtonText: "OK",
       });
-      navigate("/table");
+      navigate("/Website-ecommerce/table");
     } catch (error) {
       Swal.fire({
         title: "Error!",

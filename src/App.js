@@ -17,18 +17,27 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<GuestRoute />}>
-            <Route path="/login" element={<Login />} />
-            <Route path="/Register" element={<Register />} />
+            <Route path="/Website-ecommerce/login" element={<Login />} />
+            <Route path="/Website-ecommerce/Register" element={<Register />} />
           </Route>
 
-          <Route path="/" element={<Home />} />
-          <Route path="/Product" element={<ProductView />} />
+          <Route path="/Website-ecommerce" element={<Home />} />
+          <Route path="/Website-ecommerce/Product" element={<ProductView />} />
 
           <Route element={<ProtectedRoute />}>
-            <Route path="/Table" element={<TableView />} />
-            <Route path="/productdetails/:id" element={<DetailProductView />} />
-            <Route path="/editProduk/:id" element={<EditProductView />} />
-            <Route path="/addProduk" element={<AddProductView />} />
+            <Route path="/Website-ecommerce/Table" element={<TableView />} />
+            <Route
+              path="/Website-ecommerce/productdetails/:id"
+              element={<DetailProductView />}
+            />
+            <Route
+              path="/Website-ecommerce/editProduk/:id"
+              element={<EditProductView />}
+            />
+            <Route
+              path="/Website-ecommerce/addProduk"
+              element={<AddProductView />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

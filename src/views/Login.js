@@ -40,7 +40,7 @@ const Login = () => {
         icon: "success",
         confirmButtonText: "OK",
       });
-      navigate("/");
+      navigate("/Website-ecommerce");
     } catch (error) {
       Swal.fire({
         title: "Login Error!",
