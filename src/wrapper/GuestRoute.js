@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 function GuestRoute() {
   if (localStorage.getItem("token") != null) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/Website-ecommerce" replace />;
   }
   return <Outlet />;
 }
