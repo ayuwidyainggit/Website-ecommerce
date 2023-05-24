@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import edit from "../assets/edit.png";
 import hapus from "../assets/delete.png";
 import Swal from "sweetalert2";
+import DataTable from "react-data-table-component";
 
 const Table = () => {
   const Swal = require("sweetalert2");
@@ -17,6 +18,51 @@ const Table = () => {
   });
   const [productsFilter, setProductsFilter] = useState([]);
 
+  const columns = [
+    {
+      name: "id",
+      selector: (row) => row.id,
+    },
+    {
+      name: "name",
+      selector: (row) => row.name,
+    },
+    {
+      name: "harga_display",
+      selector: (row) => row.harga_display,
+    },
+    {
+      name: "is_diskon",
+      selector: (row) => row.is_diskon,
+    },
+    {
+      name: "harga_diskon_display",
+      selector: (row) => row.harga_diskon_display,
+    },
+    {
+      name: "image_url",
+      selector: (row) => <img src={row.image_url} />,
+    },
+    {
+      name: "category",
+      selector: (row) => row.category,
+    },
+    {
+      name: "Aksi",
+      selector: (row) => (
+        <div className="relative flex justify-between">
+          <Link to={`/Website-ecommerce/editProduk/${row.id}`}>
+            <button onClick={() => onUpdate(productsFilter)}>
+              <img src={edit} alt="" className="w-[30px]" />
+            </button>
+          </Link>
+          <button onClick={() => onDelete(row.id)}>
+            <img src={hapus} alt="" className="w-[30px]" />
+          </button>
+        </div>
+      ),
+    },
+  ];
   const handleChange = (event) => {
     if (event.target.name === "search") {
       setFilter({ ...filter, search: event.target.value });
@@ -94,59 +140,69 @@ const Table = () => {
         <p className="text-center pt-8 font-bold text-[#003049] text-[25px]">
           Table Product
         </p>
-        <div className="relative flex justify-end w-[90%] left-[5%]">
+        <div className=" relative flex justify-between w-[90%] left-[5%] items-center pb-4">
+          <div className="relative flex w-[80%]">
+            <div className="relative flex w-[60%] justify-between">
+              <div className="relative flex w-[55%] justify-between">
+                <select
+                  onChange={handleChange}
+                  name="highlight"
+                  value={filter.highlight}
+                  id=""
+                  className="border border-[#2DCFC1] h-8 w-36 rounded-sm"
+                >
+                  <option value="" disabled>
+                    Pilih Kategori
+                  </option>
+                  <option value="teknologi">teknologi</option>
+                  <option value="makanan">makanan</option>
+                  <option selected value="minuman">
+                    minuman
+                  </option>
+                  <option value="hiburan">hiburan</option>
+                  <option value="kendaraan">kendaraan</option>
+                </select>
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  name="search"
+                  value={filter.search}
+                  placeholder="search ..."
+                  className="border border-[#2DCFC1] h-8 w-[200px] rounded-sm pl-4 ml-4"
+                />
+              </div>
+              <button
+                onClick={handleSearch}
+                className="border border-[#2DCFC1] rounded-sm h-8 w-[120px] hover:bg-[#2DCFC1] hover:text-white"
+              >
+                Find
+              </button>
+
+              <button
+                onClick={handleReset}
+                className="border border-red-600 rounded-sm h-8 w-[120px] hover:bg-red-600 hover:text-white"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
           <Link to="/Website-ecommerce/addProduk">
-            <button className="font-bold border border-[#003049] bg-white text-[#003049] hover:bg-[#003049] hover:text-white h-[50px] w-[150px] rounded-xl">
+            <button className="font-bold border border-[#003049] bg-white text-[#003049] hover:bg-[#003049] hover:text-white h-[35px] w-[150px] rounded-xl">
               Create Produk +{" "}
             </button>
           </Link>
         </div>
-        <div className="relative flex w-[90%] left-[5%]">
-          <div className="relative flex w-[50%] justify-between">
-            <div className="relative flex w-[55%] justify-between">
-              <select
-                onChange={handleChange}
-                name="highlight"
-                value={filter.highlight}
-                id=""
-                className="border border-[#2DCFC1] h-8 w-36 rounded-sm"
-              >
-                <option value="" disabled>
-                  Pilih Kategori
-                </option>
-                <option value="teknologi">teknologi</option>
-                <option value="makanan">makanan</option>
-                <option selected value="minuman">
-                  minuman
-                </option>
-                <option value="hiburan">hiburan</option>
-                <option value="kendaraan">kendaraan</option>
-              </select>
-              <input
-                type="text"
-                onChange={handleChange}
-                name="search"
-                value={filter.search}
-                placeholder="search ..."
-                className="border border-[#2DCFC1] h-8 w-[200px] rounded-sm pl-4"
-              />
-            </div>
-            <button
-              onClick={handleSearch}
-              className="border border-[#2DCFC1] rounded-sm h-8 w-[120px] hover:bg-[#2DCFC1] hover:text-white"
-            >
-              Find
-            </button>
-
-            <button
-              onClick={handleReset}
-              className="border border-red-600 rounded-sm h-8 w-[120px] hover:bg-red-600 hover:text-white"
-            >
-              Reset
-            </button>
-          </div>
+        <div className="relative  justify-between w-[90%] left-[5%]">
+          <DataTable
+            title="Tabel Product"
+            columns={columns}
+            data={productsFilter}
+            progressPending={loading}
+            pagination
+          />
         </div>
-        <div className="relative flex justify-center pt-6 w-[90%] left-[5%]">
+
+        {/* <div className="relative flex justify-center pt-6 w-[90%] left-[5%]">
           {loading === true ? (
             <h1 className="text-center text-2xl font-bold">Loading ...</h1>
           ) : (
@@ -206,7 +262,7 @@ const Table = () => {
               </tbody>
             </table>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );
